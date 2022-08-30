@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="./style/styles.css" />
   </head>
-  <body class="ligth-theme" aria-label="O site está utilizando o tema light" role="body">
+  <body class="light-theme" aria-label="O site está utilizando o tema light" role="body">
 
     <header aria-label="Cabeçalho da página.">
       
@@ -108,7 +108,7 @@
           <h3>Entre para o clube de D&D e tenha experiências de <span>outro mundo<span></span></h3>
 
           <div class="form-container">
-            <form>
+            <form >
               <label for="name">Nome Completo</label>
               <input type="text" name="name" id="txtName">
           
@@ -128,7 +128,7 @@
         </div>
       </section>
     </main>
-
+    
     <footer>
       <p>
         Projeto construído para fins didáticos, com o objetivo de colocar em
@@ -136,13 +136,32 @@
       </p>
       <img src="./img/footer/logo.svg" alt="Logo DIO">
     </footer>
-
+    
     <script>
-        function switchTheme() {
-            document.body.classList.toggle("light-theme");
-            document.body.classList.toggle("dark-theme");
-        }
+      
+        window.addEventListener('click', function() {
+            const audio = document.getElementById('music');
+            audio.play();
+            audio.volume = 0.2;
+        })
 
+        function switchTheme() {
+            document.body.classList.toggle('dark-theme');
+            document.body.classList.toggle('light-theme');
+
+            document.body.setAttribute('aria-label', 'Trocando o tema');
+            
+            const theme = document.body.classList[0];
+            const music = theme === 'light-theme' ? 'normal-world.mpeg' : 'inverted-world.mpeg'
+
+            const audio = document.getElementById('music');
+            audio.src = `./music/${music}`;
+            audio.play();
+            audio.volume = 0.2
+        }
+          
     </script>
+
+    <script type="module" src="./js/main.js"></script>
   </body>
 </html>
